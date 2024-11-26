@@ -21,7 +21,7 @@ documentation = "https://github.com/z3z1ma/dbt-osmosis"
 repository = "https://github.com/z3z1ma/dbt-osmosis"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.9.7 || >3.9.7,<3.12"
+python = ">=3.9,<3.9.7 || >3.9.7,<3.13"
 click = ">7"
 dbt-core = ">=1.6,<1.9"
 "ruamel.yaml" = ">=0.17"
