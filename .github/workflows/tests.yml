@@ -17,7 +17,7 @@ jobs:
         exclude:
           # only dbt >= 1.7.9 supports Python 3.12
           - python-version: 3.12
-            dbt-version: 1.6
+            dbt-version: 1.6.0
           - python-version: 3.12
             dbt-version: 1.7.0
 
@@ -56,7 +56,11 @@ jobs:
         run: |
           poetry run python -m pytest
 
-      - name: Test Workbench
+      - name: Test dbt-osmosis
         run: |
           poetry install -E workbench -E duckdb
           poetry run dbt-osmosis yaml refactor --project-dir demo_duckdb --profiles-dir demo_duckdb
+          nohup poetry run dbt-osmosis workbench --project-dir demo_duckdb --profiles-dir demo_duckdb > dbt-osmosis.log 2>&1 &
+          SERVER_PID=$!
+          sleep 10
+          kill $SERVER_PID
