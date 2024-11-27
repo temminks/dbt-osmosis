@@ -43,6 +43,12 @@ dbt-sqlite = { version = ">=1.0.0", optional = true }
 dbt-postgres = { version = ">=1.0.0", optional = true }
 openai = { version = ">0.28.0", optional = true }
 protobuf = "<5.0.0"
+ydata-profiling = [
+  { version = "*", optional = true }
+]
+watchdog = [
+  { version = "*", optional = true }
+]
 
 [tool.poetry.extras]
 duckdb = ["dbt-duckdb"]
@@ -54,6 +60,7 @@ workbench = [
   "ydata-profiling",
   "feedparser",
   "streamlit-elements-fluence",
+  "watchdog",
 ]
 
 [tool.poetry.group.dev.dependencies]
