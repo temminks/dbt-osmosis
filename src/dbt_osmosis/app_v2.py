@@ -28,6 +28,8 @@ from dbt_osmosis.vendored.dbt_core_interface import (
     default_project_dir,
 )
 
+st.set_page_config(page_title="dbt-osmosis Workbench", page_icon="🌊", layout="wide")
+
 default_prompt = (
     "-- This is a scratch model\n-- it will not persist if you jump to another model\n-- you can"
     " use this to test your dbt SQL queries\n\nselect 1 as id, 'hello' as name"
@@ -384,5 +386,4 @@ def main():
 
 
 if __name__ == "__main__":
-    st.set_page_config(page_title="dbt-osmosis Workbench", page_icon="🌊", layout="wide")
     main()

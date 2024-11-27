@@ -73,7 +73,7 @@ jobs:
           poetry install -E workbench -E duckdb
           nohup poetry run dbt-osmosis workbench --project-dir demo_duckdb --profiles-dir demo_duckdb > dbt-osmosis.log 2>&1 &
           SERVER_PID=$!
-          sleep 5
+          sleep 10
           curl --fail http://localhost:8501 || { echo "Workbench is not running!"; exit 1; }
           kill $SERVER_PID
           cat dbt-osmosis.log
