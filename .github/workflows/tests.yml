@@ -13,7 +13,13 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
-        dbt-version: ["1.6.0", "1.7.0", "1.8.0"]
+        dbt-version: ["1.6.0", "1.7.0", "1.7.9", "1.8.0"]
+        exclude:
+          # only dbt >= 1.7.9 supports Python 3.12
+          - python-version: 3.12
+            dbt-version: 1.6
+          - python-version: 3.12
+            dbt-version: 1.7.0
 
     steps:
       - name: Check out the repository
@@ -49,3 +55,8 @@ jobs:
       - name: Run pytest
         run: |
           poetry run python -m pytest
+
+      - name: Test Workbench
+        run: |
+          poetry install -E workbench -E duckdb
+          poetry run dbt-osmosis yaml refactor --project-dir demo_duckdb --profiles-dir demo_duckdb
