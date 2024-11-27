@@ -56,10 +56,13 @@ jobs:
         run: |
           poetry run python -m pytest
 
-      - name: Test dbt-osmosis
+      - name: Test dbt-osmosis yaml
+        run: |
+          poetry run dbt-osmosis yaml refactor --project-dir demo_duckdb --profiles-dir demo_duckdb
+
+      - name: Test dbt-osmosis workbench
         run: |
           poetry install -E workbench -E duckdb
-          poetry run dbt-osmosis yaml refactor --project-dir demo_duckdb --profiles-dir demo_duckdb
           nohup poetry run dbt-osmosis workbench --project-dir demo_duckdb --profiles-dir demo_duckdb > dbt-osmosis.log 2>&1 &
           SERVER_PID=$!
           sleep 10
