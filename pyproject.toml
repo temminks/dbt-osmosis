@@ -21,6 +21,7 @@ documentation = "https://github.com/z3z1ma/dbt-osmosis"
 repository = "https://github.com/z3z1ma/dbt-osmosis"
 
 [tool.poetry.dependencies]
+# streamlit cannot be installed in Python 3.9.7
 python = ">=3.9,<3.9.7 || >3.9.7,<3.13"
 click = ">7"
 dbt-core = [
@@ -43,13 +44,9 @@ dbt-sqlite = { version = ">=1.0.0", optional = true }
 dbt-postgres = { version = ">=1.0.0", optional = true }
 openai = { version = ">0.28.0", optional = true }
 protobuf = "<5.0.0"
-pydantic = [
-  { version = "<2.0", python = "<3.12" },
-  { version = "*", python = ">=3.12" }
-]
 ydata-profiling = [
-  { version = ">=3.6.0,<4.8.0", python = "<3.12", optional = true },
-  { version = ">=3.6.0", python = ">=3.12", optional = true }
+  { version = "<4.8.0", python = "<3.12", optional = true },
+  { version = "*", python = ">=3.12", optional = true }
 ]
 watchdog = [
   { version = "*", optional = true }
