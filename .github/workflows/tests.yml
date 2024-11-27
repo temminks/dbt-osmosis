@@ -44,8 +44,10 @@ jobs:
         run: |
           echo "Expected Python version: ${{ matrix.python-version }}"
           poetry add dbt-core==${{ matrix.dbt-version }}
-          CURRENT_PYTHON_VERSION=$(python --version 2>&1 | awk '{print $2}')
-          if [[ "$CURRENT_PYTHON_VERSION" != "${{ matrix.python-version }}" ]]; then
+          CURRENT_PYTHON_VERSION=$(poetry run python --version 2>&1 | awk '{print $2}')
+          echo "poetry created the environment using Python $CURRENT_PYTHON_VERSION."
+          CURRENT_MAJOR_MINOR=$(echo $CURRENT_PYTHON_VERSION | cut -d . -f 1,2)
+          if [[ "$CURRENT_MAJOR_MINOR" != "${{ matrix.python-version }}" ]]; then
             echo "Error: Expected Python version ${{ matrix.python-version }} but poetry created an environment using $CURRENT_PYTHON_VERSION."
             exit 1
           fi
