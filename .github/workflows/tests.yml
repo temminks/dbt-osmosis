@@ -67,3 +67,4 @@ jobs:
           SERVER_PID=$!
           sleep 10
           kill $SERVER_PID
+          cat dbt-osmosis.log
