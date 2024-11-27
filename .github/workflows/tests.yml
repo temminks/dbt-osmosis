@@ -43,7 +43,7 @@ jobs:
       - name: Install dbt-core
         run: |
           echo "Expected Python version: ${{ matrix.python-version }}"
-          poetry add dbt-core==${{ matrix.dbt-version }}
+          poetry add "dbt-core==${{ matrix.dbt-version }}"
           CURRENT_PYTHON_VERSION=$(poetry run python --version 2>&1 | awk '{print $2}')
           echo "poetry created the environment using Python $CURRENT_PYTHON_VERSION."
           CURRENT_MAJOR_MINOR=$(echo $CURRENT_PYTHON_VERSION | cut -d . -f 1,2)
