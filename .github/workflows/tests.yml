@@ -42,7 +42,13 @@ jobs:
 
       - name: Install dbt-core
         run: |
+          echo "Expected Python version: ${{ matrix.python-version }}"
           poetry add dbt-core==${{ matrix.dbt-version }}
+          CURRENT_PYTHON_VERSION=$(python --version 2>&1 | awk '{print $2}')
+          if [[ "$CURRENT_PYTHON_VERSION" != "${{ matrix.python-version }}" ]]; then
+            echo "Error: Expected Python version ${{ matrix.python-version }} but poetry created an environment using $CURRENT_PYTHON_VERSION."
+            exit 1
+          fi
 
       - name: Install required packages
         run: | # install duckdb extras to be able to parse manifest
