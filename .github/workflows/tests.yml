@@ -56,7 +56,7 @@ jobs:
       - name: Install poetry environment
         run: |
           poetry run pip install .
-          poetry install --only dev --without default
+          poetry install --only dev
 
       - name: Install required packages
         run: | # install duckdb extras to be able to parse manifest
