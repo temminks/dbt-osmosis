@@ -3743,6 +3743,7 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 type = ["pytest-mypy"]
 
 [extras]
+dev = []
 duckdb = ["dbt-duckdb"]
 postgres = ["dbt-postgres"]
 sqlite = ["dbt-sqlite"]
@@ -3751,4 +3752,4 @@ workbench = ["feedparser", "streamlit", "streamlit-ace", "streamlit-elements-flu
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<3.13"
-content-hash = "3f72f5449e0ac0aab2ac5a98e4f7ff4d74bd0da5ce1c29f429293113390f5614"
+content-hash = "9f2db3e5a4bad4f29f7e7279735105eb21ed934326b394b67f0a5c772098c406"
