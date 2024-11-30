@@ -43,6 +43,7 @@ dbt-duckdb = { version = ">=1.0.0", optional = true }
 dbt-sqlite = { version = ">=1.0.0", optional = true }
 dbt-postgres = { version = ">=1.0.0", optional = true }
 openai = { version = ">0.28.0", optional = true }
+protobuf = "<5.0.0"
 ydata-profiling = { version = ">=3.6", optional = true }
 watchdog = { version = "*", optional = true }
 
