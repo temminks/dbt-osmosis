@@ -43,7 +43,9 @@ jobs:
       - name: Install dbt-core
         run: |
           echo "Expected Python version: '${{ matrix.python-version }}'"
+          poetry env use "${{ matrix.python-version }}"
           poetry run pip install "dbt-core==${{ matrix.dbt-version }}"
+          poetry run pip install .
           CURRENT_PYTHON_VERSION=$(poetry run python --version 2>&1 | awk '{print $2}')
           echo "poetry created the environment using Python '$CURRENT_PYTHON_VERSION'."
           CURRENT_MAJOR_MINOR=$(echo "$CURRENT_PYTHON_VERSION" | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
@@ -54,7 +56,7 @@ jobs:
 
       - name: Install required packages
         run: | # install duckdb extras to be able to parse manifest
-          poetry install -E duckdb
+          poetry run pip install ".[duckdb]"
 
       - name: Parse manifest
         run: |
@@ -70,7 +72,7 @@ jobs:
 
       - name: Test dbt-osmosis workbench
         run: |
-          poetry install -E workbench -E duckdb
+          poetry run pip install ."[workbench,duckdb]"
           nohup poetry run dbt-osmosis workbench --project-dir demo_duckdb --profiles-dir demo_duckdb > dbt-osmosis.log 2>&1 &
           SERVER_PID=$!
           sleep 10
