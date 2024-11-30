@@ -30,6 +30,7 @@ dbt-core = [
   # cf, https://github.com/dbt-labs/dbt-core/issues/9007
   { version = ">=1.7.9,<1.9", python = ">=3.12" },
 ]
+dbt-adapters = { version = "*", python = ">=3.12" }
 "ruamel.yaml" = ">=0.17"
 rich = ">=10"
 GitPython = ">3,<4"
