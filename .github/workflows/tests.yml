@@ -55,7 +55,8 @@ jobs:
 
       - name: Install dev dependencies
         run: |
-          poetry install --only dev
+          poetry export -f requirements.txt --output requirements.txt  --without-hashes --only dev
+          poetry run pip install -r requirements.txt
 
       - name: Parse manifest
         run: |
@@ -63,7 +64,7 @@ jobs:
 
       - name: Run pytest
         run: |
-          poetry run pip install "dbt-core==${{ matrix.dbt-version }}" ".[duckdb,dev]"
+          poetry run pip install "dbt-core==${{ matrix.dbt-version }}" ".[duckdb]"
           poetry run python -m pytest
 
       - name: Test dbt-osmosis yaml

@@ -47,6 +47,13 @@ protobuf = "<5.0.0"
 ydata-profiling = { version = ">=3.6", optional = true }
 watchdog = { version = "*", optional = true }
 
+[tool.poetry.group.dev.dependencies]
+black = ">=21.9b0"
+mypy = ">=0.910"
+pylint = ">=2.11.1"
+pytest = "^7.4.2"
+pre-commit = ">3.0.0"
+
 [tool.poetry.extras]
 duckdb = ["dbt-duckdb"]
 sqlite = ["dbt-sqlite"]
@@ -62,13 +69,6 @@ workbench = [
 dev = [
   "black", "mypy", "pylint", "pytest", "pre-commit",
 ]
-
-[tool.poetry.group.dev.dependencies]
-black = ">=21.9b0"
-mypy = ">=0.910"
-pylint = ">=2.11.1"
-pytest = "^7.4.2"
-pre-commit = ">3.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
