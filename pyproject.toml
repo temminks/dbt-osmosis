@@ -59,6 +59,13 @@ workbench = [
   "streamlit-elements-fluence",
   "watchdog",
 ]
+dev = [
+  "black",
+  "mypy",
+  "pylint",
+  "pytest",
+  "pre-commit",
+]
 
 [tool.poetry.group.dev.dependencies]
 black = ">=21.9b0"
